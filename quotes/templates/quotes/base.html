@@ -1,0 +1,36 @@
+<!-- quotes/templates/quotes/base.html 
+ A template with common HTML code that will be re-used by 
+ all of the other templates.
+ -->
+
+ {% load static %}
+<html>
+    <head>
+        <title>Kanye West Quote of the Day</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+
+    <header>
+        <h1>Kanye West Quote of the Day</h1>
+    </header>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="{% url 'quote' %}">Quote of the Day</a></li>
+                <li><a href="{% url 'show_all' %}">Show All</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+            </ul>
+        </nav>
+
+        {% block content %}
+        <!-- fill in this section with specific page detail -->
+        {% endblock %}
+
+        <hr>
+    </body>
+    <footer>
+        Page created by haiderk@bu.edu.<br>
+        This page was generated at {{current_time}}.
+    </footer>
+</html>

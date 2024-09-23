@@ -1,0 +1,19 @@
+<!-- show_all/templates/quotes/show_all.html -->
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+    <div class="grid-container">
+        <main>    
+            <h2>All quotes by Kanye West</h2>
+            <ul>
+                {% for q in quotes %}
+                    <li>{{q}}</li>
+                {% endfor %}
+            </ul>
+            <h2>All images of Kanye West</h2>
+            {% for img in images %}
+                <img src={{img}} alt="Image of Kanye West">
+            {% endfor %}
+        </main>    
+    </div>
+{% endblock %}
