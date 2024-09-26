@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hw', ## new app
-    'quotes'
+    'quotes', ## assignment 3
+    'formdata', ## new app 9/24 lec
 ]
 
 MIDDLEWARE = [

@@ -21,8 +21,9 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("hw", include("hw.urls")), ## we create the URL hw/, 
+    path("hw/", include("hw.urls")), ## we create the URL hw/, 
                                     ## and associate it with URLs in another file
-    path("quotes", include("quotes.urls")),
+    path("quotes/", include("quotes.urls")),
+    path("formdata/", include("formdata.urls")),
 ] + static(settings.STATIC_URL,
            document_root=settings.STATIC_ROOT)

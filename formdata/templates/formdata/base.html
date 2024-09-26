@@ -1,0 +1,30 @@
+<!-- formdata/templates/formdata/base.html 
+ A template with common HTML code that will be re-used by 
+ all of the other templates.
+ -->
+
+ {% load static %}
+<html>
+    <head>
+        <title>Form Data</title>
+        <!-- <link rel="stylesheet" href="/static/styles.css"> -->
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="{% url 'show_form' %}">Show Form</a></li>
+            </ul>
+        </nav>
+
+        {% block content %}
+        <!-- fill in this section with specific page detail -->
+        {% endblock %}
+
+        <hr>
+        <footer>
+            This page was generated at {{current_time}}.
+        </footer>
+    </body>
+</html>
