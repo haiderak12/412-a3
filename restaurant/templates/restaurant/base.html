@@ -1,0 +1,32 @@
+<!-- restaurant/templates/restaurant/base.html 
+ A template with common HTML code that will be re-used by 
+ all of the other templates.
+ -->
+
+ {% load static %}
+<html>
+    <head>
+        <title>Better Halal Shack</title>
+        <!-- <link rel="stylesheet" href="/static/styles.css"> -->
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="{% url 'main' %}">Main Page</a></li>
+                <li><a href="{% url 'order' %}">Order Page</a></li>
+            </ul>
+        </nav>
+
+        {% block content %}
+        <!-- fill in this section with specific page detail -->
+        {% endblock %}
+
+        <hr>
+        <footer>
+            Page created by haiderk@bu.edu.<br>
+            Generated at: {{current_time}}
+        </footer>
+    </body>
+</html>

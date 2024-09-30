@@ -64,7 +64,7 @@ body > hr {
     text-decoration: none;
 }
 
-.grid-container p {
+#order-page p {
     text-align: left;
     padding: 0 200px;
 
@@ -73,6 +73,15 @@ body > hr {
 .grid-container img {
     height: 260px;
     width: 400px;
+}
+
+.grid-container form {
+    margin: 20px 200px;
+    text-align: left;
+}
+
+.grid-container form p {
+    text-align: left;
 }
 
 h2 {
@@ -86,5 +95,5 @@ h3 {
 footer {
     text-align: center;
     color: #666;
-    margin-top: 20px;
+    margin: 20px 0;
 }
