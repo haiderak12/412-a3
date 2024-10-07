@@ -1,0 +1,26 @@
+<!-- mini_fb/templates/mini_fb/show_all_profiles.html
+ Show a response to the form submission. -->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+<div class="fb_table">
+    <h2>All Profiles</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Profile Image</th>
+        </tr>
+        {% for profile in profiles %}
+        <tr>
+            <td>{{ profile.firstname }} {{ profile.lastname }}</td>
+            <td>{{ profile.city }}</td>
+            <td>
+                <img src="{{ profile.image_url }}" alt="Profile Image" width="100">
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -85,6 +85,16 @@ body > hr {
     text-align: left;
 }
 
+.fb_table {
+    text-align: center;
+    width: 50%;
+}
+
+.fb_table th, .fb_table td {
+    padding: 15px;
+    text-align: left;
+}
+
 h2 {
     padding-bottom: 20px;
 }
