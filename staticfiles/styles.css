@@ -8,13 +8,13 @@
 /* Body styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #acc6e6;
     color: #333;
 }
 
 /* Header styling */
 header {
-    background-color: #cdcdcd;
+    background-color: #698be7;
     padding: 20px;
     text-align: center;
 }
@@ -85,8 +85,8 @@ body > hr {
 
 .fb_table {
     margin: 20px auto;
-    width: 50%;
     text-align: center;
+    border-collapse: collapse;
 }
 
 .fb_table table {
@@ -94,15 +94,19 @@ body > hr {
 }
 
 .fb_table th, .fb_table td {
-    padding: 20px;
+    padding: 5px 20px;
     text-align: left;
 }
 
-h2 {
-    padding-bottom: 20px;
+.fb_table th {
+    background-color: #499fe5;
 }
 
-h3 {
+.fb_table td {
+    background-color: #83b7e2;
+}
+
+h2, h3 {
     padding-bottom: 20px;
 }
 
