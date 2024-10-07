@@ -51,7 +51,7 @@ body > hr {
 
 .grid-container {
     margin: 20px 200px;
-    /* text-align: center; */
+    text-align: center;
 }
 
 .grid-container ul {
@@ -65,9 +65,7 @@ body > hr {
 }
 
 #order-page {
-    text-align: left;
-    padding: 0 200px;
-
+    padding: 0 100px;
 }
 
 .grid-container img {
@@ -82,6 +80,21 @@ body > hr {
 }
 
 .grid-container form p {
+    text-align: left;
+}
+
+.fb_table {
+    margin: 20px auto;
+    width: 50%;
+    text-align: center;
+}
+
+.fb_table table {
+    margin: 0 auto;
+}
+
+.fb_table th, .fb_table td {
+    padding: 20px;
     text-align: left;
 }
 
