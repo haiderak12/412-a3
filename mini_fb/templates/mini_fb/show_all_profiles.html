@@ -8,17 +8,23 @@
     <h2>All Profiles</h2>
     <table>
         <tr>
+            <th>Image</th>
             <th>Name</th>
             <th>City</th>
-            <th>Profile Image</th>
         </tr>
         {% for profile in profiles %}
         <tr>
-            <td>{{ profile.firstname }} {{ profile.lastname }}</td>
-            <td>{{ profile.city }}</td>
             <td>
-                <img src="{{ profile.image_url }}" alt="Profile Image" width="100">
+                <a href="{% url 'show_profile' profile.pk %}">
+                    <img src="{{ profile.image_url }}" alt="Profile Image" width="100">
+                </a>
             </td>
+            <td>
+                <a href="{% url 'show_profile' profile.pk %}">
+                    {{ profile.firstname }} {{ profile.lastname }}
+                </a>
+            </td>
+            <td>{{ profile.city }}</td>
         </tr>
         {% endfor %}
     </table>

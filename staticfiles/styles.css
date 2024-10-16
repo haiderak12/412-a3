@@ -7,20 +7,21 @@
 
 /* Body styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #acc6e6;
     color: #333;
 }
 
 /* Header styling */
 header {
-    background-color: #698be7;
+    background-color: rgb(122, 182, 255);
     padding: 20px;
     text-align: center;
 }
 
 header h1 {
     color: #333;
+    font-size: 2.5rem;
 }
 
 /* Navigation bar styling */
@@ -94,16 +95,89 @@ body > hr {
 }
 
 .fb_table th, .fb_table td {
-    padding: 5px 20px;
+    padding: 10px 20px;
     text-align: left;
 }
 
 .fb_table th {
-    background-color: #499fe5;
+    background-color: #333;
+    color: white;
 }
 
 .fb_table td {
     background-color: #83b7e2;
+}
+
+.create_profile {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.create_profile table {
+    margin: 0 auto;
+    text-align: right;
+}
+
+.fb_profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items horizontally */
+    margin: 20px auto;
+    background-color: #83b7e2;
+    width: 500px;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.profile-title {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.profile-title img {
+    border-radius: 20px;
+}
+
+.profile-info {
+    max-width: 600px;
+}
+
+.profile-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profile-info ul li {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.profile-info p {
+    margin: 20px 0;
+}
+
+.profile-info h3 {
+    margin-top: 30px;
+}
+
+.profile-info ul.status-messages {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profile-info ul.status-messages li {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.status_page {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.status_page form button {
+    margin: 20px;
+    padding: 5px;
 }
 
 h2, h3 {
