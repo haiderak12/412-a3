@@ -7,3 +7,4 @@ from .models import *
 
 admin.site.register(Profile)
 admin.site.register(StatusMessage)
+admin.site.register(Image)

@@ -8,19 +8,34 @@
         <img src="{{ profile.image_url }}" alt="Profile Image" width="200">
     </div>
     <div class="profile-info">
+
+        <!-- Profile details -->
         <ul>
             <li><strong>Name:</strong> {{ profile.firstname }} {{ profile.lastname }}</li>
             <li><strong>City:</strong> {{ profile.city }}</li>
             <li><strong>Email:</strong> {{ profile.email }}</li>
         </ul>
 
-        <p><a href="{% url 'create_status' profile.pk %}">Post a Status Message</a></p>
+        <p>
+            <a href="{% url 'create_status' profile.pk %}">Post a Status Message</a> |
+            <a href="{% url 'update_profile' profile.pk %}">Update Profile</a><br>
+        </p>
     
+        <!-- Display status messages -->
         <h3>Status Messages</h3>
         <ul>
             {% for status in profile.get_status_messages %}
             <li>
                 <strong>{{ status.timestamp|date:"Y-m-d H:i" }}</strong>: {{ status.message }}
+                <br>
+                [<a href="{% url 'update_status' status.pk %}">Update</a> |
+                <a href="{% url 'delete_status' status.pk %}">Delete</a>]
+                <!-- Display images associated with status message -->
+                {% for img in status.get_images %}
+                <div>
+                    <img src="{{ img.image_file.url }}" alt='{{img.image_file.url}}' width="200">
+                </div>
+                {% endfor %} 
             </li>
             {% empty %}
             <li>No status messages available.</li>

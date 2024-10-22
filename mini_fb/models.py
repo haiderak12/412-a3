@@ -16,8 +16,9 @@ class Profile(models.Model):
     image_url = models.URLField(blank=True)
 
     def __str__(self):
-        '''Return a string representation of this object.'''
-
+        '''
+        Return a string representation of this object.
+        '''
         return f'{self.firstname} {self.lastname}'
     
     def get_status_messages(self):
@@ -27,9 +28,33 @@ class Profile(models.Model):
         return reverse('show_profile', kwargs={'pk': self.pk})
     
 class StatusMessage(models.Model):
+
+    # Data attributes of a StatusMessage
     timestamp = models.DateTimeField(default=timezone.now)
     message = models.TextField()
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
+    def get_images(self):
+        '''
+        Returns all images associated with this object
+        '''
+        return self.image_set.all()
+    
     def __str__(self):
+        '''
+        Return a string representation of the StatusMessage object
+        '''
         return f"StatusMessage({self.profile.firstname} {self.profile.lastname} at {self.timestamp})"
+
+class Image(models.Model):
+    
+    # Data attributes of an Image
+    image_file = models.ImageField(upload_to='images/')
+    status_message = models.ForeignKey('StatusMessage', on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        '''
+        Returns a string representation of the Image Instance
+        '''
+        return f"Image for StatusMessage {self.status_message.id} at {self.timestamp}"

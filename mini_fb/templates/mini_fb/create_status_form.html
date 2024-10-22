@@ -4,11 +4,16 @@
 <div class="status_page">
     <h2>Post a Status Message for {{ profile.firstname }} {{ profile.lastname }}</h2>
 
-    <form method="POST" action="{% url 'create_status' profile.pk %}">
+    <form method="POST" action="{% url 'create_status' profile.pk %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
+        <p>
+            <label for="id_files">Select Image(s):</label>
+            <input type="file" name="files" id="id_files" multiple />
+        </p>
         <button type="submit">Post Status</button>
     </form>
+    <br>
 
     <p><a href="{% url 'show_profile' profile.pk %}">Back to Profile</a></p>
 </div>

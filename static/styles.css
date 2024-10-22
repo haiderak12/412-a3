@@ -84,6 +84,7 @@ body > hr {
     text-align: left;
 }
 
+/* Mini Facebook styles */
 .fb_table {
     margin: 20px auto;
     text-align: center;
@@ -118,24 +119,15 @@ body > hr {
     text-align: right;
 }
 
-.fb_profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers items horizontally */
-    margin: 20px auto;
-    background-color: #83b7e2;
-    width: 500px;
-    padding: 10px 20px;
-    border-radius: 10px;
-}
-
+/* Profile page styles */
 .profile-title {
     margin-bottom: 20px;
     text-align: center;
 }
 
-.profile-title img {
+.fb_profile img {
     border-radius: 20px;
+    padding: 5px;
 }
 
 .profile-info {
@@ -175,8 +167,53 @@ body > hr {
     text-align: center;
 }
 
-.status_page form button {
-    margin: 20px;
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Update profile page styling */
+.create_profile, .fb_profile, .status_page, .update_profile_page, .update_status_page, .delete_status_page {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+    background-color: #e6eff7;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.update_profile_page form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.update_profile_page form p {
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button:hover {
+    background-color: #555;
 }
 
 h2, h3 {
