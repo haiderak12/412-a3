@@ -10,6 +10,6 @@
         <button type="submit">Update Profile</button><br>
     </form>
 
-    <p><button><a href="{% url 'show_profile' profile.pk %}">Back to Profile</a></button></p>
+    <p><button><a href="{% url 'show_profile' object.pk %}">Back to Profile</a></button></p>
 </div>
 {% endblock %}
