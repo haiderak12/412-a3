@@ -172,6 +172,11 @@ button {
     cursor: pointer;
 }
 
+button a {
+    text-decoration: none;
+    color: white;
+}
+
 .fb_page {
     max-width: 600px;
     margin: 40px auto;
@@ -200,6 +205,21 @@ button {
     width: 100%;
     margin-bottom: 15px;
     text-align: left;
+}
+
+.status_header {
+    display: flex;
+    align-items: center;
+}
+
+.status_header img {
+    margin-right: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.status_header a {
+    margin-right: 10px;
 }
 
 form label {
