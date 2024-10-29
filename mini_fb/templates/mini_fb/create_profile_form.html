@@ -1,7 +1,7 @@
 {% extends 'mini_fb/base.html' %}
 
 {% block content %}
-<div class="create_profile">
+<div class="fb_page">
     <h2>Create a New Profile</h2>
 
     <form method="POST">
@@ -19,6 +19,6 @@
     </form>
     <br>
 
-    <p><a href="{% url 'show_all_profiles' %}">Back to All Profiles</a></p>
+    <p><button><a href="{% url 'show_profile' profile.pk %}">Back to Profile</a></button></p>
 </div>
 {% endblock %}

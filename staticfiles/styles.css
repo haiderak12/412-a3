@@ -125,11 +125,6 @@ body > hr {
     text-align: center;
 }
 
-.fb_profile img {
-    border-radius: 20px;
-    padding: 5px;
-}
-
 .profile-info {
     max-width: 600px;
 }
@@ -177,8 +172,7 @@ button {
     cursor: pointer;
 }
 
-/* Update profile page styling */
-.create_profile, .fb_profile, .status_page, .update_profile_page, .update_status_page, .delete_status_page {
+.fb_page {
     max-width: 600px;
     margin: 40px auto;
     text-align: center;
@@ -187,13 +181,22 @@ button {
     border-radius: 10px;
 }
 
-.update_profile_page form {
+.fb_page img {
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.fb_page ul {
+    list-style-type: none;
+}
+
+.fb_page form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.update_profile_page form p {
+.fb_page form p {
     width: 100%;
     margin-bottom: 15px;
     text-align: left;

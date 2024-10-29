@@ -1,7 +1,7 @@
 {% extends 'mini_fb/base.html' %}
 
 {% block content %}
-<div class="update_status_page">
+<div class="fb_page">
     <h2>Update Status Message</h2>
     <form method="POST">
         {% csrf_token %}
@@ -10,6 +10,6 @@
     </form>
     <br>
     
-    <p><a href="{% url 'show_profile' status_message.profile.pk %}">Back to Profile</a></p>
+    <p><button><a href="{% url 'show_profile' profile.pk %}">Back to Profile</a></button></p>
 </div>
 {% endblock %}
