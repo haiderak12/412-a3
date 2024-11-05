@@ -18,8 +18,20 @@
     <body>
         <nav>
             <ul>
-                <li><a href="{% url 'show_all_profiles' %}">Show All Profiles</a></li>
-                <li><a href="{% url 'create_profile' %}">Create New Profile</a></li>
+                <li><a href="{% url 'show_all_profiles' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                <li>Welcome, {{ user.username }}!</li>
+                <li><a href="{% url 'show_profile_self' %}">My Profile</a></li>
+                <li>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'create_profile' %}">Register</a></li>
+                {% endif %}
             </ul>
         </nav>
 

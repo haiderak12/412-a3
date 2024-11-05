@@ -6,14 +6,11 @@
 
     <form method="POST">
         {% csrf_token %}
-        <table>
-            {% for field in form %}
-            <tr>
-                <td>{{ field.label_tag }}</td>
-                <td>{{ field }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+        <h3>User Account Information</h3>
+        {{ user_form.as_p }}
+
+        <h3>Profile Information</h3>
+        {{ form.as_p }}
         <br>
         <button type="submit">Create Profile</button>
     </form>

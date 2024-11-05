@@ -16,13 +16,15 @@
             <li><strong>Email:</strong> {{ profile.email }}</li>
         </ul>
 
+        {% if user.is_authenticated and profile.user == user %}
+        <!-- Links for the profile owner -->
         <p>
-            <a href="{% url 'create_status' profile.pk %}">Post a Status Message</a> |
-            <a href="{% url 'update_profile' profile.pk %}">Update Profile</a> |
-            <a href="{% url 'friend_suggestions' profile.pk %}">Friend Suggestions</a> |
-            <a href="{% url 'news_feed' profile.pk %}">News Feed</a>
-            <br>
+            <a href="{% url 'create_status' %}">Post a Status Message</a> |
+            <a href="{% url 'update_profile' %}">Update Profile</a> |
+            <a href="{% url 'friend_suggestions' %}">Friend Suggestions</a> |
+            <a href="{% url 'news_feed' %}">News Feed</a>
         </p>
+        {% endif %}
 
         <!-- Display friends -->
         <h3>Friends</h3>
@@ -43,8 +45,10 @@
             <li>
                 <strong>{{ status.timestamp|date:"Y-m-d H:i" }}</strong>: {{ status.message }}
                 <br>
+                {% if user.is_authenticated and profile.user == user %}
                 [<a href="{% url 'update_status' status.pk %}">Update</a> |
                 <a href="{% url 'delete_status' status.pk %}">Delete</a>]
+                {% endif %}
                 <!-- Display images associated with status message -->
                 {% for img in status.get_images %}
                 <div>

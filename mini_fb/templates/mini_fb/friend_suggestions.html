@@ -13,7 +13,7 @@
                     <a href="{% url 'show_profile' suggestion.pk %}">
                         {{ suggestion.firstname }} {{ suggestion.lastname }}
                     </a>
-                    - <a href="{% url 'add_friend' profile.pk suggestion.pk %}">Add Friend</a>
+                    - <a href="{% url 'add_friend' suggestion.pk %}">Add Friend</a>
                 </div>
             </div>
             <br>

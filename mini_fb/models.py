@@ -4,12 +4,14 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 from django.db.models import Q
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Profile(models.Model):
     
     # data attributes of a Profile
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     firstname = models.TextField(blank=False)
     lastname = models.TextField(blank=False)
     city = models.TextField(blank=False)

@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# Handle login redirect
+LOGIN_REDIRECT_URL = '/mini_fb/'
 
 # Application definition
 
