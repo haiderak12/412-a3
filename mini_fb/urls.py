@@ -18,7 +18,7 @@ urlpatterns = [
     path('status/create_status', CreateStatusMessageView.as_view(), name='create_status'),
     path('status/<int:pk>/delete', DeleteStatusMessageView.as_view(), name='delete_status'),
     path('status/<int:pk>/update', UpdateStatusMessageView.as_view(), name='update_status'),
-    path('profile/create', CreateProfileView.as_view(), name='create_profile'),
+    path('profile/create_profile', CreateProfileView.as_view(), name='create_profile'),
     # Login and Logout URLs
     path('login/', auth_views.LoginView.as_view(template_name='mini_fb/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='mini_fb/logged_out.html'), name='logout'),
