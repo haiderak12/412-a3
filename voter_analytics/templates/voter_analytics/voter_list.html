@@ -1,0 +1,61 @@
+<!-- voter_list.html -->
+{% extends "voter_analytics/base.html" %}
+
+{% block content %}
+<h1>Voter List</h1>
+
+<!-- Filter Form -->
+<form method="get">
+    {% include 'voter_analytics/filter_form.html' %}
+</form>
+
+<!-- Voter List -->
+<table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Street Address</th>
+            <th>Date of Birth</th>
+            <th>Party Affiliation</th>
+            <th>Voter Score</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for voter in voters %}
+            <tr>
+                <td>{{ voter.first_name }}</td>
+                <td>{{ voter.last_name }}</td>
+                <td>{{ voter.street_number }} {{ voter.street_name }} {% if voter.apartment_number %} Apt {{ voter.apartment_number }}{% endif %}</td>
+                <td>{{ voter.date_of_birth|date:"Y-m-d" }}</td>
+                <td>{{ voter.party_affiliation }}</td>
+                <td>{{ voter.voter_score }}</td>
+                <td><a href="{% url 'voter' voter.pk %}">View Details</a></td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="7">No voters found.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Pagination Controls -->
+<div>
+    {% if is_paginated %}
+        <div>
+            {% if page_obj.has_previous %}
+                <a href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value }}&{% endif %}{% endfor %}page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+            {% if page_obj.has_next %}
+                <a href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value }}&{% endif %}{% endfor %}page={{ page_obj.next_page_number }}">Next</a>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}
