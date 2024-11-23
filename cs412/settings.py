@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'formdata', ## new app 9/24 lec
     'restaurant', ## assignment 4
     'mini_fb', ## assignment 5
-    'voter_analytics', ## assignment 6
+    'voter_analytics', ## assignment 10
+    'project', ## final project
 ]
 
 MIDDLEWARE = [
