@@ -14,6 +14,7 @@
                 <th>Monthly Limit</th>
                 <th>Amount Spent</th>
                 <th>Progress</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,10 @@
                     <div style="background:#eee; height:20px; width:100%; border-radius:3px; position:relative;">
                         <div style="background:{{ item.bar_color }}; width:{{ item.bar_width }}%; height:100%; border-radius:3px;"></div>
                     </div>
+                </td>
+                <td>
+                    <a href="{% url 'budget_edit' item.budget.pk %}">Edit</a> |
+                    <a href="{% url 'budget_delete' item.budget.pk %}">Delete</a>
                 </td>
             </tr>
             {% empty %}
