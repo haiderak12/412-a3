@@ -1,0 +1,13 @@
+{% extends "project/base.html" %}
+
+{% block content %}
+<div class="welcome-card">
+    <h2>Simple Budget</h2>
+    <p><b>View and manage your finances simply.</b></p><br>
+    <p>Please register or log in to access your profile.</p>
+    <div class="button-group">
+        <a href="{% url 'login' %}" class="btn">Login</a>
+        <a href="{% url 'profile_create' %}" class="btn">Create Profile</a>
+    </div>
+</div>
+{% endblock content %}

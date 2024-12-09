@@ -1,0 +1,59 @@
+{% extends "project/base.html" %}
+
+{% block content %}
+<div class="budget-summary">
+    <h2>Budget Summary</h2>
+    <p>Total Monthly Budget: ${{ total_monthly_budget|floatformat:2 }}</p>
+
+    <a href="{% url 'budget_add' %}" class="btn">Add New Budget</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Monthly Limit</th>
+                <th>Amount Spent</th>
+                <th>Progress</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in budgets %}
+            <tr>
+                <td>{{ item.budget.category.name }}</td>
+                <td>${{ item.budget.monthly_limit|floatformat:2 }}</td>
+                <td>${{ item.total_spent|floatformat:2 }}</td>
+                <td>
+                    <!-- Progress Bar -->
+                    <div style="background:#eee; height:20px; width:100%; border-radius:3px; position:relative;">
+                        <div style="background:{{ item.bar_color }}; width:{{ item.bar_width }}%; height:100%; border-radius:3px;"></div>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No budgets set yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Month/Year Selector Form for Progress Reports -->
+    <form method="get" class="date-filter-form" style="margin-top:1rem;">
+        <label for="month">Month:</label>
+        <select name="month" id="month">
+            {% for m_num, m_name in available_months %}
+                <option value="{{ m_num }}"{% if m_num == current_month %} selected{% endif %}>{{ m_name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="year">Year:</label>
+        <select name="year" id="year">
+            {% for y in available_years %}
+                <option value="{{ y }}"{% if y == current_year %} selected{% endif %}>{{ y }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit" class="btn">Update</button>
+    </form>
+</div>
+{% endblock content %}

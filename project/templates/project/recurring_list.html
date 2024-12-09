@@ -1,0 +1,39 @@
+{% extends "project/base.html" %}
+
+{% block content %}
+<div class="recurring-list">
+    <h2>My Recurring Transactions</h2>
+    <a href="{% url 'recurring_add' %}" class="btn">Add Recurring Transaction</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Amount</th>
+                <th>Start Date</th>
+                <th>Frequency</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rt in recurring_transactions %}
+            <tr>
+                <td>{{ rt.title }}</td>
+                <td>${{ rt.amount }}</td>
+                <td>{{ rt.start_date|date:"Y-m-d H:i" }}</td>
+                <td>{{ rt.get_frequency_display }}</td>
+                <td>{% if rt.category %}{{ rt.category.name }}{% else %}Other{% endif %}</td>
+                <td>
+                    <a href="{% url 'recurring_edit' rt.pk %}">Edit</a> |
+                    <a href="{% url 'recurring_delete' rt.pk %}">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No recurring transactions found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

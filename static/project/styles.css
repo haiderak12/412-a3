@@ -1,0 +1,280 @@
+/* General Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b, u, i,
+center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Layout Containers */
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Navbar */
+.navbar {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left a {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.nav-right a {
+    margin-left: 1rem;
+    color: #555;
+}
+
+.nav-right span {
+    margin-right: 1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Headings */
+h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    text-align: center;
+}
+
+.btn:hover {
+    background: #555;
+}
+
+/* Forms */
+form {
+    margin-bottom: 1rem;
+}
+
+form p, .form-group {
+    margin-bottom: 1rem;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="datetime-local"],
+form input[type="password"],
+form select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 0.9rem;
+}
+
+form button[type="submit"] {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+    background: #555;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+thead {
+    background: #f2f2f2;
+}
+
+thead th {
+    font-weight: 600;
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Cards and Containers */
+.welcome-card,
+.logged_out_page,
+.login_page,
+.create-profile,
+.dashboard,
+.transaction-list,
+.budget-summary,
+.budget-form,
+.delete-confirmation,
+.recurring-list,
+.recurring-form {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+    margin-bottom: 1.5rem;
+}
+
+.stats {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.stat-card {
+    flex: 1;
+    background: #fefefe;
+    border: 1px solid #eee;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.stat-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.stat-card p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.chart-container {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    max-width: 650px;
+    margin: 2rem auto;
+}
+
+/* Adjust margins between the form and the chart */
+.date-filter-form {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.date-filter-form label {
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.date-filter-form select, .date-filter-form button {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Additional Spacing */
+.actions,
+.button-group {
+    margin-top: 1rem;
+}
+
+.actions a,
+.button-group a {
+    margin-right: 0.5rem;
+}
+
+/* Budget Progress Bar */
+.budget-summary table td {
+    vertical-align: middle;
+}
+
+.budget-summary table {
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #aaa;
+    padding: 1rem 0;
+    border-top: 1px solid #ddd;
+    margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+    .stats {
+        flex-direction: column;
+    }
+
+    .nav-right a {
+        margin-left: 0.5rem;
+    }
+}

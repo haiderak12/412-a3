@@ -1,0 +1,13 @@
+{% extends "project/base.html" %}
+
+{% block content %}
+<div class="transaction-form">
+    <h2>{% if object %}Edit{% else %}Add{% endif %} Transaction</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+        <a href="{% url 'transaction_list' %}">Cancel</a>
+    </form>
+</div>
+{% endblock content %}

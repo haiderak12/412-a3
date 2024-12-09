@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Simple Budget</title>
+    <link rel="stylesheet" href="{% static 'project/styles.css' %}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="{% url 'home' %}">Simple Budget</a>
+            </div>
+            <div class="nav-right">
+                {% if user.is_authenticated %}
+                    <span>Hello, {{ user.username }}!</span>
+                    <a href="{% url 'dashboard' %}">Dashboard</a>
+                    <a href="{% url 'budget_summary' %}">Budgets</a>
+                    <a href="{% url 'recurring_list' %}">Recurring</a>
+                    <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                    <a href="{% url 'profile_create' %}">Create Profile</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+    <footer>
+        <p>All Rights Reserved by Haider Khan Credits ©</p>
+    </footer>
+</body>
+</html>

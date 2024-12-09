@@ -1,0 +1,13 @@
+{% extends "project/base.html" %}
+
+{% block content %}
+<div class="recurring-form">
+    <h2>{% if object %}Edit{% else %}Add{% endif %} Recurring Transaction</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+        <a href="{% url 'recurring_list' %}">Cancel</a>
+    </form>
+</div>
+{% endblock content %}

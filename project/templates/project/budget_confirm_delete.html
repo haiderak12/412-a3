@@ -1,0 +1,13 @@
+{% extends "project/base.html" %}
+
+{% block content %}
+<div class="delete-confirmation">
+    <h2>Delete Budget</h2>
+    <p>Are you sure you want to delete the budget for "{{ object.category.name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+        <a href="{% url 'budget_summary' %}">No, go back</a>
+    </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends "project/base.html" %}
+
+{% block content %}
+<div class="budget-form">
+    <h2>{% if object %}Edit{% else %}Add{% endif %} Budget</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+        <a href="{% url 'budget_summary' %}">Cancel</a>
+    </form>
+</div>
+{% endblock content %}
