@@ -286,7 +286,7 @@ class BudgetSummaryView(LoginRequiredMixin, View):
             'available_months': available_months,
             'available_years': available_years,
         }
-
+        
         return render(request, 'project/budget_summary.html', context)
 
 
