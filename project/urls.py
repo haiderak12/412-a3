@@ -31,7 +31,6 @@ urlpatterns = [
     path('budget/<int:pk>/delete/', BudgetDeleteView.as_view(), name='budget_delete'),
 
     # Recurring Transactions
-    # Recurring transactions
     path('recurring/', RecurringTransactionListView.as_view(), name='recurring_list'),
     path('recurring/add/', RecurringTransactionCreateView.as_view(), name='recurring_add'),
     path('recurring/<int:pk>/edit/', RecurringTransactionUpdateView.as_view(), name='recurring_edit'),

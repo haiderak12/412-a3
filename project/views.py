@@ -20,16 +20,25 @@ import datetime
 
 # Home view (public/homepage)
 class HomeView(TemplateView):
+    """
+    Display the public homepage for unauthenticated users.
+    """
     template_name = 'project/home.html'
 
 # Profile (User) creation view
 class ProfileCreateView(CreateView):
+    """
+    Allow a new user to create a profile (register an account).
+    """
     form_class = UserCreationForm
     template_name = 'project/profile_create.html'
     success_url = reverse_lazy('login')  # After successful creation, redirect to login page
 
 # Custom login/logout views
 def login_view(request):
+    """
+    Display the login page and authenticate the user upon form submission.
+    """
     if request.user.is_authenticated:
         # If the user is already logged in, redirect to dashboard or home
         return redirect('dashboard')
@@ -48,11 +57,17 @@ def login_view(request):
 
 
 def logout_view(request):
+    """
+    Log the user out and redirect them to the home page.
+    """
     if request.user.is_authenticated:
         logout(request)
     return redirect('home')
 
 class DashboardView(LoginRequiredMixin, View):
+    """
+    Display a dashboard with financial summaries, charts, and filtering by month and year.
+    """
     def get(self, request):
         user = request.user
         # Calculate totals
@@ -112,7 +127,7 @@ class DashboardView(LoginRequiredMixin, View):
             (5, "May"), (6, "June"), (7, "July"), (8, "August"),
             (9, "September"), (10, "October"), (11, "November"), (12, "December")
         ]
-        # For simplicity, let's just give a small range of years
+        
         current_year = now.year
         available_years = [current_year, current_year - 1, current_year - 2]
 
@@ -132,49 +147,65 @@ class DashboardView(LoginRequiredMixin, View):
 ### Transaction CRUD Views
 
 class TransactionListView(LoginRequiredMixin, ListView):
+    """
+    Display a list of all the logged-in user's transactions.
+    """
     model = Transaction
     template_name = 'project/transaction_list.html'
     context_object_name = 'transactions'
 
     def get_queryset(self):
+        """Return transactions belonging to the currently logged-in user, ordered by date."""
         return Transaction.objects.filter(user=self.request.user).order_by('-date')
 
 
 class TransactionCreateView(LoginRequiredMixin, CreateView):
+    """
+    Provide a form to create a new transaction for the logged-in user.
+    """
     model = Transaction
     form_class = TransactionForm
     template_name = 'project/transaction_form.html'
     success_url = reverse_lazy('transaction_list')
 
     def form_valid(self, form):
-        # Set the user field to the currently logged in user
+        """Automatically set the user on the new transaction before saving."""
         form.instance.user = self.request.user
         return super().form_valid(form)
 
 
 class TransactionUpdateView(LoginRequiredMixin, UpdateView):
+    """
+    Provide a form to update an existing transaction owned by the logged-in user.
+    """
     model = Transaction
     form_class = TransactionForm
     template_name = 'project/transaction_form.html'
     success_url = reverse_lazy('transaction_list')
 
     def get_queryset(self):
-        # Ensure user can only update their own transactions
+        """Only allow editing transactions that belong to the current user."""
         return Transaction.objects.filter(user=self.request.user)
 
 
 class TransactionDeleteView(LoginRequiredMixin, DeleteView):
+    """
+    Allow the logged-in user to delete one of their transactions.
+    """
     model = Transaction
     template_name = 'project/transaction_confirm_delete.html'
     success_url = reverse_lazy('transaction_list')
 
     def get_queryset(self):
-        # Ensure user can only delete their own transactions
+        """Only allow deleting transactions that belong to the current user."""
         return Transaction.objects.filter(user=self.request.user)
     
 ### Budget CRUD Views
 
 class BudgetSummaryView(LoginRequiredMixin, View):
+    """
+    Display a summary of all budgets for the logged-in user, including monthly usage progress.
+    """
     def get(self, request):
         user = request.user
         now = timezone.now()
@@ -203,7 +234,6 @@ class BudgetSummaryView(LoginRequiredMixin, View):
         budgets = Budget.objects.filter(user=user).select_related('category')
 
         # Calculate monthly spending per category
-        # For each budget, sum the expenses for that category in the given month
         budget_data = []
         for b in budgets:
             total_spent = Transaction.objects.filter(
@@ -261,92 +291,119 @@ class BudgetSummaryView(LoginRequiredMixin, View):
 
 
 class BudgetCreateView(LoginRequiredMixin, CreateView):
+    """
+    Allow the user to create a new budget tied to a selected category.
+    """
     model = Budget
     form_class = BudgetForm
     template_name = 'project/budget_form.html'
     success_url = reverse_lazy('budget_summary')
 
     def form_valid(self, form):
+        """Set the current user on the newly created budget."""
         form.instance.user = self.request.user
         return super().form_valid(form)
 
     def get_form(self, *args, **kwargs):
+        """Customize the form to display all available categories for selection."""
         form = super().get_form(*args, **kwargs)
-        # Restrict category choices to categories owned by this user that don't have a budget yet
         form.fields['category'].queryset = Category.objects.all()
         return form
 
 
 class BudgetUpdateView(LoginRequiredMixin, UpdateView):
+    """
+    Provide a form to update an existing budget's monthly limit.
+    """
     model = Budget
     form_class = BudgetForm
     template_name = 'project/budget_form.html'
     success_url = reverse_lazy('budget_summary')
 
     def get_queryset(self):
+        """Only allow editing budgets that belong to the current user."""
         return Budget.objects.filter(user=self.request.user)
 
     def get_form(self, *args, **kwargs):
+        """Allow changing the monthly limit but keep category choices global."""
         form = super().get_form(*args, **kwargs)
-        # When updating, allow changing the limit but usually category shouldn't change.
-        # If you want to allow changing category, you'd also filter similarly as in create.
         form.fields['category'].queryset = Category.objects.all()
         return form
 
 
 class BudgetDeleteView(LoginRequiredMixin, DeleteView):
+    """
+    Allow the user to delete one of their budgets.
+    """
     model = Budget
     template_name = 'project/budget_confirm_delete.html'
     success_url = reverse_lazy('budget_summary')
 
     def get_queryset(self):
+        """Only allow deleting budgets that belong to the current user."""
         return Budget.objects.filter(user=self.request.user)
     
 ### Recurring Transactions CRUD Views
 
 class RecurringTransactionListView(LoginRequiredMixin, ListView):
+    """
+    Display a list of all the user's recurring transactions.
+    """
     model = RecurringTransaction
     template_name = 'project/recurring_list.html'
     context_object_name = 'recurring_transactions'
 
     def get_queryset(self):
+        """Return recurring transactions belonging to the current user."""
         return RecurringTransaction.objects.filter(user=self.request.user).order_by('start_date')
 
 class RecurringTransactionCreateView(LoginRequiredMixin, CreateView):
+    """
+    Allow the user to create a new recurring transaction.
+    """
     model = RecurringTransaction
     form_class = RecurringTransactionForm
     template_name = 'project/recurring_form.html'
     success_url = reverse_lazy('recurring_list')
 
     def form_valid(self, form):
+        """Set the current user on the new recurring transaction."""
         form.instance.user = self.request.user
         return super().form_valid(form)
 
     def get_form(self, *args, **kwargs):
+        """Display all categories for the user to choose from."""
         form = super().get_form(*args, **kwargs)
-        # Restrict category choices to categories owned by the user
         form.fields['category'].queryset = form.fields['category'].queryset.all()
         return form
 
 class RecurringTransactionUpdateView(LoginRequiredMixin, UpdateView):
+    """
+    Provide a form to update an existing recurring transaction.
+    """
     model = RecurringTransaction
     form_class = RecurringTransactionForm
     template_name = 'project/recurring_form.html'
     success_url = reverse_lazy('recurring_list')
 
     def get_queryset(self):
+        """Only allow updating recurring transactions that belong to the current user."""
         return RecurringTransaction.objects.filter(user=self.request.user)
 
     def get_form(self, *args, **kwargs):
+        """Allow editing recurring transaction details and choose from all categories."""
         form = super().get_form(*args, **kwargs)
-        # Restrict category choices to user's categories
         form.fields['category'].queryset = form.fields['category'].queryset.all()
         return form
 
 class RecurringTransactionDeleteView(LoginRequiredMixin, DeleteView):
+    """
+    Allow the user to delete one of their recurring transactions.
+    """
     model = RecurringTransaction
     template_name = 'project/recurring_confirm_delete.html'
     success_url = reverse_lazy('recurring_list')
 
     def get_queryset(self):
+        """Only allow deleting recurring transactions that belong to the current user."""
         return RecurringTransaction.objects.filter(user=self.request.user)

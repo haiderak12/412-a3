@@ -15,7 +15,6 @@ footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
     vertical-align: baseline;
 }
 
-/* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
@@ -35,6 +34,10 @@ a {
     text-decoration: none;
 }
 
+.title-card {
+    color: #fff;
+}
+
 a:hover {
     text-decoration: underline;
 }
@@ -48,8 +51,8 @@ main {
 
 /* Navbar */
 .navbar {
-    background: #fff;
-    border-bottom: 1px solid #ddd;
+    background: #4caf50;
+    border-bottom: 1px solid #3da545;
     padding: 0.75rem 1rem;
     display: flex;
     justify-content: space-between;
@@ -63,12 +66,12 @@ main {
 
 .nav-right a {
     margin-left: 1rem;
-    color: #555;
+    color: #fff;
 }
 
 .nav-right span {
     margin-right: 1rem;
-    color: #333;
+    color: #fff;
     font-weight: 500;
 }
 
@@ -83,7 +86,7 @@ h2 {
 /* Buttons */
 .btn {
     display: inline-block;
-    background: #333;
+    background: #4caf50;
     color: #fff;
     padding: 0.5rem 1rem;
     border-radius: 2px;
@@ -93,7 +96,7 @@ h2 {
 }
 
 .btn:hover {
-    background: #555;
+    background: #45a346;
 }
 
 /* Forms */
@@ -123,7 +126,7 @@ form select {
 }
 
 form button[type="submit"] {
-    background: #333;
+    background: #4caf50;
     color: #fff;
     border: none;
     padding: 0.5rem 1rem;
@@ -132,7 +135,7 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-    background: #555;
+    background: #45a346;
 }
 
 /* Tables */
@@ -221,7 +224,7 @@ tbody tr:last-child td {
     margin: 2rem auto;
 }
 
-/* Adjust margins between the form and the chart */
+/* Filter Form */
 .date-filter-form {
     margin-bottom: 1rem;
     display: flex;

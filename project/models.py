@@ -3,13 +3,19 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Category(models.Model):
+    """
+    A category for organizing transactions, shared globally among all users.
+    """
     name = models.CharField(max_length=100)
-    
+
     def __str__(self):
         return self.name
 
 
 class Transaction(models.Model):
+    """
+    A single user-owned financial transaction, either income or expense, associated with a category.
+    """
     TRANSACTION_TYPES = [
         ('income', 'Income'),
         ('expense', 'Expense'),
@@ -27,6 +33,9 @@ class Transaction(models.Model):
 
 
 class Budget(models.Model):
+    """
+    A monthly spending limit set by a user for a specific category.
+    """
     category = models.OneToOneField(Category, on_delete=models.CASCADE, related_name='budget')
     monthly_limit = models.DecimalField(max_digits=10, decimal_places=2)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='budgets')
@@ -36,6 +45,9 @@ class Budget(models.Model):
 
 
 class RecurringTransaction(models.Model):
+    """
+    A user-defined transaction that repeats on a specified frequency (daily, weekly, monthly, or yearly).
+    """
     FREQUENCY_CHOICES = [
         ('daily', 'Daily'),
         ('weekly', 'Weekly'),
